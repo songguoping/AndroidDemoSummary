@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/divide_line"
+        android:layout_height="3dp"/>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:gravity="center_vertical"
+       android:padding="15dp">
+       <com.sgp.shoppingcartdemo.view.SmoothCheckBox
+           android:id="@+id/cb_GroupItem"
+           android:layout_width="24dp"
+           android:layout_height="24dp"/>
+       <TextView
+           android:id="@+id/tv_Position"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="郑州保税仓发货"
+           android:textColor="#333333"
+           android:textSize="15sp"
+           android:layout_marginLeft="15dp"
+           android:drawableLeft="@mipmap/icon_positionicon"
+           android:drawablePadding="3dp"/>
+   </LinearLayout>
+</LinearLayout>

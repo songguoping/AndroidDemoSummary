@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:paddingRight="15dp"
+    android:paddingBottom="15dp">
+    <LinearLayout
+        android:id="@+id/ll_Check"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:paddingRight="17dp"
+        android:paddingLeft="15dp">
+        <com.sgp.shoppingcartdemo.view.SmoothCheckBox
+            android:id="@+id/cb_Item"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:background="@color/divide_line"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="78dp"
+                android:layout_height="78dp"
+                android:src="@mipmap/ic_launcher"/>
+            <RelativeLayout
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_width="0dp">
+                <TextView
+                    android:id = "@+id/tv_Reduce"
+                    android:layout_width = "30dp"
+                    android:layout_height = "30dp"
+                    android:layout_marginTop = "7dp"
+                    android:background = "@drawable/selector_shopping_cart_subtract"
+                    android:gravity = "center"
+                    android:text = "-"
+                    android:textColor = "@color/text_666666"
+                    android:textSize = "15sp" />
+
+                <EditText
+                    android:id = "@+id/et_Count"
+                    android:layout_width = "49dp"
+                    android:layout_height = "30dp"
+                    android:layout_alignTop = "@+id/tv_Reduce"
+                    android:layout_marginBottom = "1dp"
+                    android:layout_toRightOf = "@+id/tv_Reduce"
+                    android:background = "@drawable/bg_input_box"
+                    android:gravity = "center"
+                    android:maxLength = "6"
+                    android:inputType="number"
+                    android:text = "1"
+                    android:textColor = "@color/text_666666"
+                    android:textCursorDrawable = "@null"
+                    android:textSize = "12sp" />
+
+                <TextView
+                    android:id = "@+id/tv_Add"
+                    android:layout_width = "30dp"
+                    android:layout_height = "30dp"
+                    android:layout_alignTop = "@+id/tv_Reduce"
+                    android:layout_toRightOf = "@id/et_Count"
+                    android:background = "@drawable/selector_shopping_cart_add"
+                    android:gravity = "center"
+                    android:text = "+"
+                    android:textColor = "@color/text_666666"
+                    android:textSize = "15sp" />
+
+                <TextView
+                    android:id="@+id/tv_Price"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="￥899"
+                    android:textColor="#FE3824"
+                    android:textSize="13sp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="18dp"
+                android:gravity="end">
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_Delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/icon_delete"
+                android:layout_marginTop="5dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

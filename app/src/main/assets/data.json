@@ -1,0 +1,22 @@
+{"content":[
+	{"id":"0",
+	"adress":"广州市天河城",
+	"isselected":"false",
+	"gooddetail":[{"id":"00","pic":"11","count":"1","name":"BB霜","price":"99","isedit":"false","isselected":"false"},
+				{"id":"01","pic":"11","count":"1","name":"男士洁面乳","price":"66","isedit":"false","isselected":"false"},
+				{"id":"02","pic":"11","count":"1","name":"眼线笔","price":"16","isedit":"false","isselected":"false"}]
+	},
+
+	{"id":"1",
+	"adress":"广州市海心沙",
+	"isselected":"false",
+	"gooddetail":[{"id":"10","pic":"11","count":"1","name":"华为5x","price":"999","isedit":"false","isselected":"false"}]
+	},
+
+	{"id":"2",
+	"adress":"东莞市日式酒店",
+	"isselected":"false",
+	"gooddetail":[{"id":"20","pic":"11","count":"5","name":"杜蕾斯","price":"3","isedit":"false","isselected":"false"},
+				{"id":"21","pic":"11","count":"2","name":"杰士邦","price":"2","isedit":"false","isselected":"false"}]
+	}
+]}
