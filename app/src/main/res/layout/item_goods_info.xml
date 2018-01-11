@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:layout_height="90dp">
+    <CheckedTextView
+        android:id="@+id/ctv_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:drawableRight="@drawable/selector_radiobutton"
+        android:paddingLeft="40dp"
+        android:paddingRight="8dp" />
+
+    <ImageView
+        android:id="@+id/iv_goods_icon"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
+        android:layout_toRightOf="@id/ctv_goods"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_goods_sub"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="7dp"
+        android:layout_toRightOf="@id/iv_goods_icon"
+        android:background="@drawable/selector_shopping_cart_subtract"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="@color/text_666666"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/et_goods_count"
+        android:layout_width="49dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/tv_goods_sub"
+        android:layout_marginBottom="1dp"
+        android:layout_toRightOf="@+id/tv_goods_sub"
+        android:background="@drawable/bg_input_box"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="6"
+        android:text="1"
+        android:textColor="@color/text_666666"
+        android:textCursorDrawable="@null"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_goods_add"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/tv_goods_sub"
+        android:layout_toRightOf="@id/et_goods_count"
+        android:background="@drawable/selector_shopping_cart_add"
+        android:gravity="center"
+        android:text="+"
+        android:textColor="@color/text_666666"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_goods_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_goods_sub"
+        android:layout_toRightOf="@id/iv_goods_icon"
+        android:paddingTop="6dp"
+        android:text="￥899"
+        android:textColor="#FE3824"
+        android:textSize="13sp" />
+
+    <ImageView
+        android:id="@+id/iv_goods_del"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/pic_delete"
+        android:layout_marginTop="5dp"/>
+</RelativeLayout>

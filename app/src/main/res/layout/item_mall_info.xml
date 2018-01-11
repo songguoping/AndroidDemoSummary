@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="@android:color/white"
+    android:orientation="horizontal">
+    <CheckedTextView
+        android:id="@+id/ctv_mall"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:drawableRight="@drawable/selector_radiobutton"
+        android:paddingLeft="15dp"/>
+    <TextView
+        android:id="@+id/tv_mall_name"
+        android:layout_width="wrap_content"
+        android:text="商店名"
+        android:layout_gravity="center_vertical"
+        android:textSize="15sp"
+        android:textColor="@color/text_333333"
+        android:drawableLeft="@drawable/pic_mall"
+        android:gravity="center_vertical"
+        android:drawablePadding="6dp"
+        android:paddingLeft="8dp"
+        android:layout_height="wrap_content" />
+</LinearLayout>

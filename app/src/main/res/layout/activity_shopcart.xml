@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        layout = "@layout/include_toolbar" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_shopcart"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+    </android.support.v7.widget.RecyclerView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:gravity="center_vertical"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        >
+
+        <CheckedTextView
+            android:id="@+id/ctv_shopcart_all"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:drawableRight="@drawable/selector_radiobutton"
+            android:paddingLeft="15dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.69"
+            android:layout_height="wrap_content"
+            android:textColor="#333333"
+            android:textSize="15sp"
+            android:layout_marginLeft="5dp"
+            android:text="全选"/>
+
+        <ImageView
+            android:id="@+id/iv_shopcart"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/menu_shop_car_selected" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:gravity="end">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#333333"
+                    android:textSize="15sp"
+                    android:text="合计"/>
+                <TextView
+                    android:id="@+id/tv_shopcart_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FE3824"
+                    android:textSize="15sp"
+                    android:text="￥0"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_settlement"
+            android:layout_width="95dp"
+            android:layout_height="match_parent"
+            android:background="@color/bg_fe3824"
+            android:text="结算(0)"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+
+</LinearLayout>
