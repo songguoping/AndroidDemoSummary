@@ -19,9 +19,9 @@ public class GoodsBean implements Serializable,MultiItemEntity{
      */
 
     public String id;
-    public String count;
+    public int count;
     public String name;
-    public String price;
+    public int price;
     public boolean isselected;
 
     @Override

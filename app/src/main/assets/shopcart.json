@@ -15,14 +15,14 @@
         "id": "01",
         "count": "1",
         "name": "小米6",
-        "price": "2299",
+        "price": "1",
         "isselected": false
       },
       {
         "id": "02",
         "count": "1",
         "name": "小米MIX2",
-        "price": "3299",
+        "price": "1",
         "isselected": false
       }
     ]
@@ -36,21 +36,21 @@
         "id": "10",
         "count": "1",
         "name": "HUAWEI nova 2s",
-        "price": "2699",
+        "price": "1",
         "isselected": false
       },
       {
         "id": "11",
         "count": "10",
         "name": "HUAWEI Mate10 Pro",
-        "price": "4899",
+        "price": "1",
         "isselected": false
       },
       {
         "id": "12",
         "count": "1",
         "name": "HUAWEI Mate10",
-        "price": "3899",
+        "price": "1",
         "isselected": false
       }
     ]
@@ -64,21 +64,21 @@
         "id": "21",
         "count": "3",
         "name": "iPhone X",
-        "price": "8388",
+        "price": "1",
         "isselected": false
       },
       {
         "id": "22",
         "count": "1",
         "name": "iPhone 8",
-        "price": "5888",
+        "price": "1",
         "isselected": false
       },
       {
         "id": "23",
         "count": "1",
         "name": "iPhone 7",
-        "price": "4588",
+        "price": "1",
         "isselected": false
       }
     ]

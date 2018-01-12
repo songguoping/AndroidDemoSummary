@@ -47,7 +47,7 @@ public class ShopCartAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity,B
                 break;
             case TYPE_LEVEL_1:
                 GoodsBean goods = (GoodsBean) item;
-                helper.setText(R.id.tv_goods_price,goods.price);
+                helper.setText(R.id.tv_goods_price,String.valueOf(goods.price));
                 CheckedTextView ctvGoods = helper.getView(R.id.ctv_goods);
                 EditText etGoodsCount = helper.getView(R.id.et_goods_count);
                 if(goods.isselected){
@@ -59,8 +59,9 @@ public class ShopCartAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity,B
                 if (textWatcher != null) {
                     etGoodsCount.removeTextChangedListener(textWatcher);
                 }
-                etGoodsCount.setText(goods.count);
-                etGoodsCount.setSelection(goods.count.length());
+                String sCount = String.valueOf(goods.count);
+                etGoodsCount.setText(sCount);
+                etGoodsCount.setSelection(sCount.length());
                 EditTextWatcher watcher = new EditTextWatcher(goods,etGoodsCount,helper.getLayoutPosition());
                 etGoodsCount.setTag(KEY_DATA,watcher);
                 etGoodsCount.addTextChangedListener(watcher);
@@ -96,13 +97,12 @@ public class ShopCartAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity,B
 
         @Override
         public void afterTextChanged(Editable s) {
-            System.out.println("Gooddetail.count "+Gooddetail.count);
-            beforeCount=Integer.parseInt(Gooddetail.count);
+            beforeCount=Gooddetail.count;
             if(!TextUtils.isEmpty(s.toString().trim())){
                 String textNum = s.toString().trim();
-                Gooddetail.count=textNum;
+                Gooddetail.count=Integer.parseInt(textNum);
             }else {
-                Gooddetail.count="1";
+                Gooddetail.count=1;
             }
             et.setSelection(et.getText().length());
             if(mOnTextChangeListener!=null){

@@ -22,6 +22,7 @@ public class MallBean extends AbstractExpandableItem<GoodsBean> implements Seria
     public String id;
     public String adress;
     public boolean isselected;
+    public int mallTotalPrice;
     public List<GoodsBean> goods;
 
     @Override
