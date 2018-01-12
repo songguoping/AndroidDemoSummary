@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -40,6 +42,8 @@ public class ShopCartActivity extends AppCompatActivity {
     private ShopCartAdapter mShopCartAdapter;
     private StringBuffer mStringBuffer;
     private TextView mToolbar;
+    private TextView mTvTotalPrice;
+    private int mTotalPrice=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +57,9 @@ public class ShopCartActivity extends AppCompatActivity {
     private void initView() {
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_shopcart);
         mToolbar = (TextView) findViewById(R.id.tv_toolbar_title);
+        mTvTotalPrice = (TextView) findViewById(R.id.tv_shopcart_total);
         mToolbar.setText("购物车");
+        mTvTotalPrice.setText(String.valueOf(mTotalPrice));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.addItemDecoration(new SpacesItemDecoration(TextSizeUtils.dip2px(this,1)));
     }
@@ -90,6 +96,7 @@ public class ShopCartActivity extends AppCompatActivity {
         }
         mShopCartAdapter = new ShopCartAdapter(res);
         mRecyclerView.setAdapter(mShopCartAdapter);
+        mShopCartAdapter.bindToRecyclerView(mRecyclerView);
     }
 
     private void initEvent() {
@@ -105,7 +112,93 @@ public class ShopCartActivity extends AppCompatActivity {
                     }
                 }
             }
+
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                if(view.getId()==R.id.ctv_mall){
+                    clickMallItem((MallBean) mShopCartAdapter.getData().get(position));
+                    return;
+                }
+                EditText etGoodsCount = (EditText) adapter.getViewByPosition(mRecyclerView,position, R.id.et_goods_count);
+                String sCount = etGoodsCount.getText().toString().trim();
+                int count;
+                if(!TextUtils.isEmpty(sCount)){
+                    count = Integer.parseInt(sCount);
+                }else {
+                    count=1;
+                }
+                switch (view.getId()){
+                    case R.id.tv_goods_add:
+                        etGoodsCount.setText(String.valueOf(count+1));
+                        break;
+                    case R.id.tv_goods_sub:
+                        if(count>1){
+                            etGoodsCount.setText(String.valueOf(count-1));
+                        }
+                        break;
+                    case R.id.iv_goods_del:
+                        GoodsBean goodsBean = (GoodsBean) mShopCartAdapter.getData().get(position);
+                        int parentPosition = mShopCartAdapter.getParentPosition(goodsBean);
+                        ((MallBean)mShopCartAdapter.getData().get(parentPosition)).removeSubItem(goodsBean);
+                        mShopCartAdapter.getData().remove(position);
+                        mShopCartAdapter.notifyDataSetChanged();
+                        mTotalPrice-=count*Integer.parseInt(goodsBean.price);
+                        break;
+                    case R.id.ctv_goods:
+                        clickGoodsItem(count,position);
+                        break;
+                }
+                mTvTotalPrice.setText(String.valueOf(mTotalPrice));
+            }
         });
+
+        mShopCartAdapter.setOnTextChangeListener(new ShopCartAdapter.OnTextChangeListener() {
+            @Override
+            public void textChanged(int beforeCount,int position) {
+                MultiItemEntity entity = mShopCartAdapter.getData().get(position);
+                if(entity instanceof GoodsBean){
+                    GoodsBean goodsBean = (GoodsBean) entity;
+                    if(goodsBean.isselected){
+                        //把上次改变的减掉再加上本次改变的
+                        mTotalPrice-=beforeCount*Integer.parseInt(goodsBean.price);
+                        mTotalPrice+=Integer.parseInt(goodsBean.count)*Integer.parseInt(goodsBean.price);
+                        mTvTotalPrice.setText(String.valueOf(mTotalPrice));
+                    }
+                }
+            }
+        });
+    }
+
+    private void clickMallItem(MallBean mallBean) {
+        if(mallBean.isselected){
+            mallBean.isselected=false;
+            //取消该店铺商品全选
+            for (GoodsBean goods : mallBean.goods){
+                goods.isselected=false;
+            }
+        }else {
+            mallBean.isselected=true;
+            //该店铺商品全选
+            for (GoodsBean goods : mallBean.goods){
+                goods.isselected=true;
+            }
+        }
+        mShopCartAdapter.notifyDataSetChanged();
+    }
+
+    private void clickGoodsItem(int count, int position) {
+        MultiItemEntity entity = mShopCartAdapter.getData().get(position);
+        if(entity instanceof GoodsBean){
+            GoodsBean goodsBean = (GoodsBean) entity;
+            if(goodsBean.isselected){
+                goodsBean.isselected=false;
+                mTotalPrice-=count*Integer.parseInt(goodsBean.price);
+            }else {
+                goodsBean.isselected=true;
+                mTotalPrice+=count*Integer.parseInt(goodsBean.price);
+            }
+            mShopCartAdapter.notifyDataSetChanged();
+        }
     }
 
 }

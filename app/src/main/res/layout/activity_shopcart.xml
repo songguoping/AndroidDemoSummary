@@ -75,7 +75,7 @@
             android:layout_width="95dp"
             android:layout_height="match_parent"
             android:background="@color/bg_fe3824"
-            android:text="结算(0)"
+            android:text="结算"
             android:textColor="@android:color/white"
             android:textSize="16sp"/>
     </LinearLayout>

@@ -44,6 +44,7 @@
         android:gravity="center"
         android:inputType="number"
         android:maxLength="6"
+        android:hint="1"
         android:text="1"
         android:textColor="@color/text_666666"
         android:textCursorDrawable="@null"

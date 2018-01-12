@@ -24,7 +24,7 @@ public class ShopCartAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity,B
     public static final int TYPE_LEVEL_0 = 0;
     public static final int TYPE_LEVEL_1 = 1;
     protected static final int KEY_DATA = 0xFFF11133;
-
+    private OnTextChangeListener mOnTextChangeListener ;
     public ShopCartAdapter(List<MultiItemEntity> data) {
         super(data);
         addItemType(TYPE_LEVEL_0, R.layout.item_mall_info);
@@ -60,10 +60,11 @@ public class ShopCartAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity,B
                     etGoodsCount.removeTextChangedListener(textWatcher);
                 }
                 etGoodsCount.setText(goods.count);
-                EditTextWatcher watcher = new EditTextWatcher(goods);
+                etGoodsCount.setSelection(goods.count.length());
+                EditTextWatcher watcher = new EditTextWatcher(goods,etGoodsCount,helper.getLayoutPosition());
                 etGoodsCount.setTag(KEY_DATA,watcher);
                 etGoodsCount.addTextChangedListener(watcher);
-                helper.addOnClickListener(R.id.tv_goods_add).addOnClickListener(R.id.tv_goods_sub).addOnClickListener(R.id.iv_goods_del);
+                helper.addOnClickListener(R.id.tv_goods_add).addOnClickListener(R.id.tv_goods_sub).addOnClickListener(R.id.iv_goods_del).addOnClickListener(R.id.ctv_goods);
                 break;
         }
     }
@@ -74,14 +75,18 @@ public class ShopCartAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity,B
     class EditTextWatcher implements TextWatcher {
 
         private GoodsBean Gooddetail;
+        private EditText et;
+        private int position;
+        private int beforeCount=1;
 
-        public EditTextWatcher(GoodsBean item) {
+        public EditTextWatcher(GoodsBean item,EditText et,int position) {
             this.Gooddetail = item;
+            this.et=et;
+            this.position=position;
         }
 
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
         }
 
         @Override
@@ -91,10 +96,26 @@ public class ShopCartAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity,B
 
         @Override
         public void afterTextChanged(Editable s) {
+            System.out.println("Gooddetail.count "+Gooddetail.count);
+            beforeCount=Integer.parseInt(Gooddetail.count);
             if(!TextUtils.isEmpty(s.toString().trim())){
                 String textNum = s.toString().trim();
                 Gooddetail.count=textNum;
+            }else {
+                Gooddetail.count="1";
             }
+            et.setSelection(et.getText().length());
+            if(mOnTextChangeListener!=null){
+                mOnTextChangeListener.textChanged(beforeCount,position);
+            }
+
         }
+    }
+
+    public void setOnTextChangeListener(OnTextChangeListener listener){
+        this.mOnTextChangeListener=listener;
+    }
+    public interface OnTextChangeListener{
+        void textChanged(int beforeCount,int position);
     }
 }
