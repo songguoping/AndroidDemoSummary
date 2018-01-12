@@ -178,7 +178,9 @@ public class ShopCartActivity extends AppCompatActivity {
                         break;
                     case R.id.iv_goods_del:
                         GoodsBean goodsBean = (GoodsBean) mShopCartAdapter.getData().get(position);
-                        mTotalPrice-=count*goodsBean.price;
+                        if(goodsBean.isselected){
+                            mTotalPrice-=count*goodsBean.price;
+                        }
                         int parentPosition = mShopCartAdapter.getParentPosition(goodsBean);
                         MallBean mallBean = (MallBean) mShopCartAdapter.getData().get(parentPosition);
                         mallBean.removeSubItem(goodsBean);
